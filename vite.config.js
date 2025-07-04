@@ -8,9 +8,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',  // Certifique-se de que a pasta de saída é "dist"
     rollupOptions: {
-      input: {
-        main: './index.html', // Certifique-se de que o entry point é o seu index.html
-      },
+      input: './index.html',  // O entry point é o seu index.html
     },
   },
 })
