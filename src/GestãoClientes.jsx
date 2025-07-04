@@ -162,9 +162,9 @@ export default function GestaoClientes() {
     <div className="space-y-6 p-6">
       <h2 className="text-2xl font-bold text-center mb-6">Gestão de Clientes</h2>
 
-      <div className="flex gap-6">
+      <div className="flex gap-6 flex-wrap">
         {/* Lista de clientes */}
-        <div className="w-1/3 flex flex-col">
+        <div className="w-full sm:w-1/3 flex flex-col">
           <input
             type="search"
             placeholder="Pesquisar cliente ou instrumento..."
@@ -199,7 +199,7 @@ export default function GestaoClientes() {
 
         {/* Dados do cliente selecionado */}
         {selecionado && (
-          <div className="w-2/3 bg-white border rounded-lg shadow-lg p-6 space-y-6 overflow-auto max-h-[600px]">
+          <div className="w-full sm:w-2/3 bg-white border rounded-lg shadow-lg p-6 space-y-6 overflow-auto max-h-[600px]">
             <h3 className="text-xl font-semibold">Cliente: {selecionado.nome}</h3>
 
             {selecionado.instrumentos.map((inst) => (
@@ -257,13 +257,13 @@ export default function GestaoClientes() {
                 <div className="flex justify-end gap-2 mt-4">
                   <button
                     onClick={() => setModalExcluirInstrumento({ clienteId: selecionado.id, instrumentoId: inst.id })}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                    className="px-3 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
                   >
                     Excluir Instrumento
                   </button>
                   <button
                     onClick={() => setModalTransferirInstrumento({ clienteId: selecionado.id, instrumentoId: inst.id })}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                    className="px-3 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                   >
                     Transferir Instrumento
                   </button>
@@ -275,7 +275,7 @@ export default function GestaoClientes() {
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setModalExcluirCliente({ clienteId: selecionado.id })}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                className="px-3 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700"
               >
                 Excluir Cliente
               </button>

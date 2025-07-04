@@ -393,7 +393,7 @@ export default function FormularioRececao() {
         </div>
 
         {/* serviços */}
-        <div>
+        <div className="space-y-3 max-h-96 overflow-y-auto">
           <h2 className="font-semibold mb-2">Serviços</h2>
           {form.servicos.map((s, i) => (
             <div key={`serv-${i}`} className="flex gap-3 mb-3 items-center">
@@ -415,7 +415,7 @@ export default function FormularioRececao() {
                 <button
                   type="button"
                   onClick={() => removerItem("servicos", i)}
-                  className="px-3 py-2 bg-red-500 text-white rounded-lg"
+                  className="px-3 py-2 bg-red-500 text-white rounded-lg text-xs"
                 >
                   Remover
                 </button>
@@ -432,7 +432,7 @@ export default function FormularioRececao() {
         </div>
 
         {/* produtos */}
-        <div>
+        <div className="space-y-3 max-h-96 overflow-y-auto">
           <h2 className="font-semibold mt-6 mb-2">Produtos</h2>
           {form.produtos.map((p, i) => (
             <div key={`prod-${i}`} className="flex gap-3 mb-3 items-center">
@@ -453,7 +453,7 @@ export default function FormularioRececao() {
               <button
                 type="button"
                 onClick={() => removerItem("produtos", i)}
-                className="px-3 py-2 bg-red-500 text-white rounded-lg"
+                className="px-3 py-2 bg-red-500 text-white rounded-lg text-xs"
               >
                 Remover
               </button>

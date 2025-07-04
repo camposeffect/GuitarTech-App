@@ -19,6 +19,7 @@ function AppContent() {
   const [verificandoEmpresa, setVerificandoEmpresa] = useState(true);
   const [pagina, setPagina] = useState("rececao");
   const [mostrarSettings, setMostrarSettings] = useState(false);
+  const [menuAberto, setMenuAberto] = useState(false);
 
   useEffect(() => {
     const verificarEmpresa = async () => {
@@ -47,13 +48,24 @@ function AppContent() {
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
         <div className="flex gap-4">
-          <button onClick={() => setPagina("rececao")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Receção</button>
-          <button onClick={() => setPagina("entrega")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Entrega</button>
-          <button onClick={() => setPagina("historico")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Histórico</button>
-          <button onClick={() => setPagina("dashboard")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Dashboard</button>
-          <button onClick={() => setPagina("gestaoClientes")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Gestão de Clientes</button>
-          <button onClick={() => setMostrarSettings(true)} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition ml-4">Definições</button>
+          {/* Menu para telas pequenas (Hamburger) */}
+          <button 
+            onClick={() => setMenuAberto(!menuAberto)} 
+            className="sm:hidden text-white p-2">
+            <span className="text-xl">☰</span>
+          </button>
+
+          {/* Menu para dispositivos maiores */}
+          <div className={`sm:flex gap-4 ${menuAberto ? 'block' : 'hidden'}`}>
+            <button onClick={() => setPagina("rececao")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Receção</button>
+            <button onClick={() => setPagina("entrega")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Entrega</button>
+            <button onClick={() => setPagina("historico")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Histórico</button>
+            <button onClick={() => setPagina("dashboard")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Dashboard</button>
+            <button onClick={() => setPagina("gestaoClientes")} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition">Gestão de Clientes</button>
+            <button onClick={() => setMostrarSettings(true)} className="px-4 py-2 border border-white rounded hover:bg-gray-700 transition ml-4">Definições</button>
+          </div>
         </div>
+        {/* Botão de logout */}
         <button onClick={() => signOut(auth)} className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition">
           <FiLogOut />
           Logout
