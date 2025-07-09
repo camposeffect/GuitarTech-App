@@ -97,7 +97,7 @@ export default function HistoricoServicos() {
   const [loading, setLoading] = useState(true);
   const [editandoId, setEditandoId] = useState(null);
   const [formEdit, setFormEdit] = useState({});
-  const [sortField, setSortField] = useState("criadoEm");
+  const [sortField, setSortField] = useState("dataEntrada");
   const [sortDirection, setSortDirection] = useState("desc");
 
   const [isModalOpen, setIsModalOpen] = useState(false); // Para controle do modal
@@ -122,10 +122,10 @@ export default function HistoricoServicos() {
       }
     };
 
-    // Buscar os serviços
+    // Buscar os serviços ordenados pela data de entrada
     const q = query(
       collection(db, "empresas", user.uid, "servicos"),
-      orderBy("criadoEm", "desc")
+      orderBy("dataEntrada", "desc") // Ordenando por dataEntrada
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
